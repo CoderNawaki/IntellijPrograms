@@ -1,0 +1,15 @@
+package com.lama;
+
+public class Excersice {
+  
+	public static void main(String[] args) {
+		
+		String[] fruits = {"ringo","banana","mikan"};
+		for(String fruit:fruits) {
+			System.out.println(fruit);
+		}
+		
+	}
+	
+
+}

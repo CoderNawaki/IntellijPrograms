@@ -1,0 +1,21 @@
+package com.Lama.SpringBasic.Mail;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration //you can even use  @component instead of  configuration
+public class MailConfig {
+	
+	@Bean
+	@Profile("dev")
+	public MailSender mockMailSender() {
+		return new MockMailSender();
+	}
+	
+	@Bean
+	@Profile("!dev")
+	public MailSender smtpMailSender() {
+		return new SmtpMailSender();
+	}
+}

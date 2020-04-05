@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Mar 29 20:23:57 JST 2020
+org.eclipse.jst.jee.server\:Login=/Users/lamanawraj24/apache-tomcat-9.0.33/wtpwebapps/Login
+org.eclipse.jst.jee.server\:Cookies=/Users/lamanawraj24/apache-tomcat-9.0.33/wtpwebapps/Cookies

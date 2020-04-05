@@ -1,0 +1,10 @@
+package com.Lama.SpringBasic;
+
+public class Triangle {
+
+	public void draw() {
+		System.out.println("Traingle is drawn");
+	}
+	
+
+}

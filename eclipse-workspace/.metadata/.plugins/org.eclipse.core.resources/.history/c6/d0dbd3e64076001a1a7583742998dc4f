@@ -1,0 +1,9 @@
+package com.lama;
+
+public class Excersice {
+
+	public static void main(String[] args) {
+		System.out.print("hello there");
+	}
+
+}

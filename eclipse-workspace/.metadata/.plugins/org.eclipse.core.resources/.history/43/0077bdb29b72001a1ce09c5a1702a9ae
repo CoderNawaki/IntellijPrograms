@@ -1,0 +1,16 @@
+package com.Lama.SpringBasic.Mail;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+public class MailConfig {
+	
+	public MailSender mockMailSender() {
+		return new MockMailSender();
+	}
+	
+	public MailSender smtpMailSender() {
+		return new SmtpMailSender();
+	}
+}

@@ -1,0 +1,28 @@
+package com.Lama.SpringBasic.Mail;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.mail.javamail.JavaMailSender;
+
+@Configuration //you can even use  @component instead of  configuration
+public class MailConfig {
+	
+	
+	
+	
+	@Bean
+	@ConditionalOnProperty(name="spring.mail.host",
+			havingValue="foo",matchIfMissing=true)
+	public MailSender mockMailSender() {
+		return new MockMailSender();
+	}
+	//day91  using constructor in the smtpMailSender
+	@Bean
+	@ConditionalOnProperty("spring.mail.host")
+	public MailSender smtpMailSender(JavaMailSender javamailSender) {
+		return new SmtpMailSender(javamailSender);
+	}
+}

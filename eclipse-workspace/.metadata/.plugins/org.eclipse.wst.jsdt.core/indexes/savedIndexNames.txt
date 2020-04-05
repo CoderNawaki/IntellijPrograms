@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/Users/lamanawraj24/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1607121336.index
+3731227722.index
+75691891.index
+3994613509.index
+1479097491.index
+2834342573.index
+3939697993.index

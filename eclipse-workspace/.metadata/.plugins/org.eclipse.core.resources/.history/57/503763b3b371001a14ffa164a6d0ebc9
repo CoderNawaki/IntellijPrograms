@@ -1,0 +1,5 @@
+package com.Lama.SpringBasic.Mail;
+
+public class MockMailSender {
+
+}

@@ -1,0 +1,29 @@
+package com.Lama.SpringBasic.Mail;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+  //import org.springframework.context.annotation.Primary;
+  
+//import org.springframework.stereotype.Component;
+
+
+
+
+
+ //create instance of Mock mail sender which is called application context
+
+public class MockMailSender implements MailSender{
+	
+	//creating log and logFactory
+	private static Log log = LogFactory.getLog(MockMailSender.class);
+	
+	@Override//calling the interface
+	public void send(String to, String subject, String body) {
+		
+		log.info("Sending Mock mail to"+to);
+		log.info("with subject"+subject);
+		log.info("any body"+body);
+		
+	}
+
+}
