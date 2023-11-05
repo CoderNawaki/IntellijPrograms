@@ -10,21 +10,17 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 //import org.springframework.stereotype.Component;
 
-
-
-    //@Component   //use as the bean in the component and component is the mother one of all annotation
-  //@Qualifier("smtpMail")
+//@Component   //use as the bean in the component and component is the mother one of all annotation
+//@Qualifier("smtpMail")
 public class SmtpMailSender implements MailSender{
 	private static Log log = LogFactory.getLog(SmtpMailSender.class);
 	
 	private JavaMailSender javaMailSender;
 	
-	
 	public SmtpMailSender(JavaMailSender javaMailSender) {
 		
 		this.javaMailSender = javaMailSender;
 	}
-
 
 	@Override
 	//copying the same code from MockmailSender except the name of class

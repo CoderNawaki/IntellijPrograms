@@ -5,11 +5,6 @@ import org.apache.commons.logging.LogFactory;
   //import org.springframework.context.annotation.Primary;
   
 //import org.springframework.stereotype.Component;
-
-
-
-
-
  //create instance of Mock mail sender which is called application context
 
 public class MockMailSender implements MailSender{
