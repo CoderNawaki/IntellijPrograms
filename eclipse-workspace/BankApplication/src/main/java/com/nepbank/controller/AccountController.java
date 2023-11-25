@@ -2,12 +2,14 @@
 
 public class AccountController{
 
-   @Autowired 
+@Autowired 
 private AccountService accountService;
 
 @GetMapping
-public List<Account>getAllAccounts(){
-    return accountService.getAllAccounts();
+public ResponseEntity<List<Account>>getAllAccounts(){
+    List<Account> accounts =accountService.getAllAccounts();
+
+    return ResponseEntity.ok(accounts);
 }
 
 @GetMapping("/{id}")

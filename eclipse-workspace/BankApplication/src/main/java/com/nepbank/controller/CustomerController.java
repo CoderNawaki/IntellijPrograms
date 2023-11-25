@@ -7,6 +7,37 @@ public class CustomerController{
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AccountService AccountService;
+
+
+    @GetMapping("/current")
+    public ResponseEntity<User>getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User currentUser = userService.getUserByUsername(username);
+
+        if(currentUser!=null){
+            return ResponseEntity.ok(currentUser);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+    @GetMapping("/current/accounts")
+    public ResponseEntity<List<Account>>getCurrentUserAccounts(){
+        Authenticaton authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User currentUser = userService.getUserByUsername(username);
+
+        if(currentUser!=null){
+            List<Account>accounts = AccountService.getAccountsByUser(currentUser);
+            return ResponseEntity.ok(accounts);
+
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
     @GetMapping
     public List<User>getAllUsers(){
         return userService.getAllUsers();

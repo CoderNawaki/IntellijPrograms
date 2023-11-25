@@ -8,5 +8,29 @@
 <body>
     <h1>Welcome to the Bank</h1>
     <!-- Add more content as needed -->
+    <!--Display user information if authenticated -->
+    <div th:if="${#authentication.isAuthenticated()}">
+        <p>User:<span th:text="${#authentication.name}"></span></p>
+        <p>Roles:<span th:text="${#authentication.authorities}"></span></p>
+    </div>
+
+    <!--Display account details if available-->
+    <div th:if="${accounts}">
+        <h3>Your Accounts</h3>
+        <ul>
+            <li th:each="account:${accounts}">
+                  <p>Account Number:<span th:text="${account.accountNumber}"></span></p>
+                  <p>Balance:<span th:text="${account.balance}"></span></p>  
+                  <!--Add more details as needed-->
+            </li>
+        </ul>
+    </div>
+
+    <!--Links for various actions-->
+    <div>
+        <a href="@{/accounts}" th:if="${#authentication.hasAnyRole('USER','ADMIN')}">View Accounts</a>
+        <a href="@{/users}" th:if="${#authentication.hasRole('ADMIN')}">Manage Users</a>
+        <a href="@{/logout}" th:if="${#authentication.isAuthenticated()}">Logout</a>
+    </div>
 </body>
 </html>
