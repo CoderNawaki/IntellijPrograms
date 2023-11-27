@@ -4,10 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Bank Website</title>
+
+    <style>
+        .notification{
+            position:fixed;
+            top: 10px;
+            right: 10px;
+            padding:10px;
+            background-color: #4CAF50;
+            color: white;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+
+    <!--Notification area-->
+    <div class="notification" th:if="${notification}">
+        <p th:text="${notification}"></p>
+    </div>
+
+
     <h1>Welcome to the Bank</h1>
     <!-- Add more content as needed -->
+
     <!--Display user information if authenticated -->
     <div th:if="${#authentication.isAuthenticated()}">
         <p>User:<span th:text="${#authentication.name}"></span></p>

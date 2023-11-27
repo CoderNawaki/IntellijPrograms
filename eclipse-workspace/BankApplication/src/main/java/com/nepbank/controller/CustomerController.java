@@ -49,8 +49,15 @@ public class CustomerController{
     }
 
     @PostMapping
-    public void createUser(@RequestBody User user){
+    public ResponseEntity<String> createUser(@RequestBody User user){
         userService.saveUser(user);
+        notifyUser("User created successFully: "+user.getUserName());
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully!");
+    }
+
+    private void notifyUser(String message){
+        //store the notification message in a session attribute
+        RequestContext.getCurrentInstance().getSessionMap().put("notification",message);
     }
 
     @PutMapping("/{id}")
