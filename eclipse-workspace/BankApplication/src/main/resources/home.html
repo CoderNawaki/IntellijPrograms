@@ -15,6 +15,10 @@
             color: white;
             display: none;
         }
+
+        .search-container{
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -27,6 +31,15 @@
 
     <h1>Welcome to the Bank</h1>
     <!-- Add more content as needed -->
+
+    <!--Search feature-->
+    <div class="search-container">
+        <form th:action="@{/transactions/search}" method="get">
+            <label for="keyword">Search Transactions:</label>
+            <input type="text" id="keyword" name="keyword" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
     <!--Display user information if authenticated -->
     <div th:if="${#authentication.isAuthenticated()}">
