@@ -19,6 +19,14 @@
         .search-container{
             margin-top: 20px;
         }
+        .contact-container{
+            position: fixed;
+            bottom:10px;
+            right:10px;
+            padding:10px;
+            background-color: #333;
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -39,6 +47,13 @@
             <input type="text" id="keyword" name="keyword" required>
             <button type="submit">Search</button>
         </form>
+    </div>
+
+    <!--Contact feature-->
+    <div class="contact-container">
+        <h4>Contact Us</h4>
+        <p>Email:info@yourbank.com</p>
+        <p>Phone:+818033069841</p>
     </div>
 
     <!--Display user information if authenticated -->
@@ -65,5 +80,24 @@
         <a href="@{/users}" th:if="${#authentication.hasRole('ADMIN')}">Manage Users</a>
         <a href="@{/logout}" th:if="${#authentication.isAuthenticated()}">Logout</a>
     </div>
+
+    <!--Fetch contact information using javascript -->
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            fetchContactInfo();
+        });
+
+        function fetchContactInfo(){
+            fetch('/contact/info').then(response=>response.json())
+            .then(data=>{
+                document.getElementById('email').innerText=data.email;
+                document.getElementById('phone').innerText=data.phone;
+
+            })
+            .catch(error=>console.error('Error fetching contact information: ',error));
+        }
+
+        
+    </script>
 </body>
 </html>
