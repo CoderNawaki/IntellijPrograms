@@ -39,4 +39,14 @@ public void saveUser(User user){
     public void deleteUser(Long id){
         userRepository.deleteById(id));
     }
+
+
+    @Override
+    public User getCurrentAuthenticatedUser(){
+        Authentication  authentication = SecurityContextHolder.getContext().getAuthentication();6
+        String username = authentication.getName();
+        return userRepository.findByUsername(username);
+    }
+
+    
 }
