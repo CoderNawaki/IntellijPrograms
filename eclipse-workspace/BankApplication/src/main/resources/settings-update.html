@@ -1,0 +1,29 @@
+<!--settings-update.html-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="utf-8">
+    <title>Update user settings</title>
+
+</head>
+
+<body>
+    <h2>Update user settings</h2>
+    <!--Display user details in a form for updating-->
+
+    <form th:action="@{/settings/update}" method="post" th:object="${user}">
+         <label for="firstName">First Name:</label>
+         <input type ="text" id="firstName" name="firstName" th:field="*{firstName}" required>
+         <br>
+         <label for="lastName">Last Name:</label>
+         <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>
+         <!--add more fields as needed-->
+         
+         <br>
+         <button type="submit">Update Settings</button>
+
+    </form>
+
+    <!--Link to view settings-->
+    <a th:href="@{/settings}">View Settings</a>
+</body>

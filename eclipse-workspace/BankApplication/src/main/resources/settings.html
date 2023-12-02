@@ -1,0 +1,26 @@
+<!--settings.html-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Settings</title>
+
+</head>
+<body>
+    <h2>User Settings</h2>
+
+    <!--Display user details-->
+    <p th:text="'Username: '+ ${user.username}"></p>
+    <p th:text="'First Name: '+${user.firstName}"></p>
+    <p th:text="'Last Name: '+${user.lastName}"></p>
+
+    <!--Add more fields as needed -->
+
+    <!--Display update message if any-->
+    <p th:if="${message}" th:text="${message}"></p>
+
+    <!--Link to update settings-->
+    <a th:href="@{/settings/update}">Update Settings</a>
+
+</body>
