@@ -49,4 +49,42 @@ public class loginController{
         //return true if the face id is verified,false otherwise
         return false;
     }
+
+
+    @GetMapping("/forgot-password")
+    public String showForgotPasswordForm() {
+        return "forgot-password";
+    }
+
+    @PostMapping("/forgot-password")
+    public String processForgotPassword(@RequestParam("email") String email, Model model) {
+        User user = userService.findByEmail(email);
+
+        if (user != null) {
+            // Generate a password reset token (you can use a library for this)
+            String resetToken = generateResetToken();
+            
+            // Save the token in the database
+            userService.savePasswordResetToken(user, resetToken);
+            
+            // Send an email with the reset link
+            sendResetEmail(user.getEmail(), resetToken);
+            
+            model.addAttribute("message", "Password reset link sent to your email.");
+        } else {
+            model.addAttribute("error", "User not found with the provided email address.");
+        }
+
+        return "forgot-password";
+    }
+
+     private String generateResetToken() {
+        // Implement logic to generate a unique reset token
+        return "some-unique-token";
+    }
+
+    private void sendResetEmail(String email, String resetToken) {
+        // Implement logic to send an email with the reset link
+        // You can use a service like JavaMailSender or an external email provider
+    }
 }
