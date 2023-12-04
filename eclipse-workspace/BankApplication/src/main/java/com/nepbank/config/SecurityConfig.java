@@ -16,6 +16,7 @@ public  class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/accounts","/accounts/**").hasAnyRole("USER","ADMIN")
                 .antMatchers("/users","/users/**").hasRole("ADMIN")
                 .antMatchers("/settings","/settings/update").authenticated()
+                .antMatchers("/forgot-password","/forgot-password/**").permitAll()
                 .and()
             .formLogin()
                 .loginPage("/login")

@@ -87,4 +87,12 @@ public class loginController{
         // Implement logic to send an email with the reset link
         // You can use a service like JavaMailSender or an external email provider
     }
+
+    @GetMapping("/reset-password/{token}")
+    public String showResetPasswordForm(@PathVariable String token,Model model){
+        User user = userService.findByPasswordResetToken(token);
+        if(user==null){
+            model.addAttribute("error","Invalid password reset token.");
+        }
+    }
 }
